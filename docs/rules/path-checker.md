@@ -1,10 +1,10 @@
-# Checking imports against FSD architecture rules (`fsd-architecture/import-path-check`)
+# Checking relative imports in one FSD slice (`fsd-architecture/import-path-check`)
 
 <!-- end auto-generated rule header -->
 
 ## Rule Details
 
-Checking imports against FSD architecture rules
+Checking relative imports in one FSD slice
 
 ### Options
 

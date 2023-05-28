@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-feature-sliced-design-architecture",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Custom eslint plugin to follow FSD (Feature Sliced Design) frontend architecture rules",
   "keywords": [
     "fsd",

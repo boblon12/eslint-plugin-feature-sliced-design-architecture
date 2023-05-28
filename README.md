@@ -92,13 +92,13 @@ Examples of **incorrect** code for this rule:
 import AddComment from '@/features/AddComment' // Error: A layer can only import the underlying layers into itself. (app > pages > widgets > features > entities > shared)
 ```
 
-# Checking imports against FSD architecture rules (`feature-sliced-design-architecture/import-path-check`)
+# Checking relative imports in one FSD slice(`feature-sliced-design-architecture/import-path-check`)
 
 <!-- end auto-generated rule header -->
 
 ## Rule Details
 
-Checking imports against FSD architecture rules
+Checking relative imports in one FSD slice
 
 ### Options
 
