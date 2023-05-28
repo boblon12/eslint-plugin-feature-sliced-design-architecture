@@ -1,4 +1,4 @@
-# eslint-plugin-ulbi-tv-plugin
+# eslint-plugin-feature-sliced-design-architecture
 
 Custom eslint plugin to follow FSD (Feature Sliced Design) frontend architecture rules.
 [FSD Architecture documentation](https://feature-sliced.design/docs/get-started/overview)
@@ -8,13 +8,13 @@ Custom eslint plugin to follow FSD (Feature Sliced Design) frontend architecture
 You'll first need to install [ESLint](https://eslint.org/):
 
 ```sh
-npm i eslint --save-dev
+npm i eslint -D
 ```
 
-Next, install `eslint-plugin-ulbi-tv-plugin`:
+Next, install `eslint-plugin-feature-sliced-design-architecture`:
 
 ```sh
-npm install eslint-plugin-ulbi-tv-plugin --save-dev
+npm install -D eslint-plugin-feature-sliced-design-architecture
 ```
 
 ## Usage
