@@ -15,6 +15,10 @@
     "eslint-plugin"
   ],
   "author": "Daniil Faershtein",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boblon12/eslint-plugin-feature-sliced-design-architecture.git"
+  },
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint .",
