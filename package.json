@@ -1,0 +1,40 @@
+{
+  "name": "eslint-plugin-feature-sliced-design-architecture",
+  "version": "0.0.1",
+  "description": "Custom eslint plugin to follow FSD (Feature Sliced Design) frontend architecture rules",
+  "keywords": [
+    "fsd",
+    "frontend",
+    "feature-sliced-design",
+    "architecture",
+    "frontend-architecture",
+    "fsd-rules",
+    "linting",
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "Daniil Faershtein",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha tests --recursive"
+  },
+  "dependencies": {
+    "micromatch": "^4.0.5",
+    "requireindex": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.1",
+    "eslint-plugin-eslint-plugin": "^4.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "mocha": "^9.1.3"
+  },
+  "engines": {
+    "node": "12.x || 14.x || >= 16"
+  },
+  "peerDependencies": {
+    "eslint": ">=6"
+  },
+  "license": "ISC"
+}
