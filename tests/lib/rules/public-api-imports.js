@@ -1,15 +1,19 @@
 /**
- * @fileoverview descr
- * @author timur
+ * @fileoverview FSD Architecture rule for public api imports
+ * @author Daniil Faershtein
  */
-"use strict";
 
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-const rule = require("../../../lib/rules/public-api-imports"),
-  RuleTester = require("eslint").RuleTester;
+const rule = require('../../../lib/rules/public-api-imports'),
+  RuleTester = require('eslint').RuleTester;
+const {
+  PUBLIC_ERROR,
+  TESTING_PUBLIC_ERROR,
+  NEED_FROM_PUBLIC_ERROR,
+} = require('../../../lib/consts/public-api-imports.js');
 
 
 //------------------------------------------------------------------------------
@@ -20,66 +24,122 @@ const ruleTester = new RuleTester({
   parserOptions: {ecmaVersion: 6, sourceType: 'module'}
 });
 
-const aliasOptions = [
-  {
-    alias: '@'
-  }
-]
-
-ruleTester.run("public-api-imports", rule, {
+ruleTester.run('public-api-imports', rule, {
   valid: [
     {
-      code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice'",
-      errors: [],
+      code: "import { ArticleCommentSlice } from '../../model/slices/addCommentFormSlice'",
     },
     {
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'",
-      errors: [],
-      options: aliasOptions,
+      code: "import { ArticleCommentSlice } from '@/entities/Article'",
+      options: [
+        {
+          alias: '@',
+        },
+      ],
     },
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\file.test.ts',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
-      errors: [],
-      options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
-      }],
+      filename: 'C:/Users/project/src/entities/Article/file.test.ts',
+      code: "import { ArticleCommentSlice } from '@/entities/Article/testing'",
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.*',
+            '**/*.stories.*',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
     },
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\StoreDecorator.tsx',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
-      errors: [],
-      options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
-      }],
-    }
+      filename: 'C:/Users/project/src/entities/Article/StoreDecorator.tsx',
+      code: "import { ArticleCommentSlice } from '@/entities/Article/testing'",
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.*',
+            '**/*.stories.*',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+    },
   ],
 
   invalid: [
     {
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/file.ts'",
-      errors: [{ message: "Абсолютный импорт разрешен только из Public API (index.ts)"}],
-      options: aliasOptions,
+      code: "import { ArticleCommentSlice } from '@/entities/Article/model/file.ts'",
+      errors: [{ messageId: PUBLIC_ERROR }],
+      options: [
+        {
+          alias: '@',
+        },
+      ],
+      output: `import { ArticleCommentSlice } from '@/entities/Article'`,
     },
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\StoreDecorator.tsx',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing/file.tsx'",
-      errors: [{message: 'Абсолютный импорт разрешен только из Public API (index.ts)'}],
-      options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
-      }],
+      filename: 'C:/Users/project/src/entities/Article/StoreDecorator.tsx',
+      code: "import { ArticleCommentSlice } from '@/entities/Article/testing/file.tsx'",
+      errors: [{ messageId: PUBLIC_ERROR }],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.*',
+            '**/*.stories.*',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+      output: `import { ArticleCommentSlice } from '@/entities/Article'`,
     },
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\forbidden.ts',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
-      errors: [{message: 'Тестовые данные необходимо импортировать из publicApi/testing.ts'}],
-      options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
-      }],
-    }
+      filename: 'C:/Users/project/src/entities/Article/forbidden.ts',
+      code: "import { ArticleCommentSlice } from '@/entities/Article/testing'",
+      errors: [
+        {
+          messageId: TESTING_PUBLIC_ERROR,
+        },
+      ],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.*',
+            '**/*.stories.*',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+      output: null,
+    },
+    {
+      filename:
+        'C:/Users/project/src/widgets/Profile/model/selectors/getUserProfile.ts',
+      code: "import { getUser } from '../../../../entities/User/model/selectors/getUser/getUser'",
+      errors: [
+        {
+          messageId: NEED_FROM_PUBLIC_ERROR,
+        },
+      ],
+      options: [
+        {
+          alias: '@',
+        },
+      ],
+      output: `import { getUser } from '@/entities/User'`,
+    },
+    {
+      filename:
+        'C:/Users/project/src/widgets/Profile/model/selectors/getUserProfile.ts',
+      code: "import { getUser } from '../../../../entities/User/model/selectors/getUser/getUser'",
+      errors: [
+        {
+          messageId: NEED_FROM_PUBLIC_ERROR,
+        },
+      ],
+      output: `import { getUser } from 'entities/User'`,
+    },
   ],
 });

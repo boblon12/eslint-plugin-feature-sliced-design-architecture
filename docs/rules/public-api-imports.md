@@ -1,4 +1,4 @@
-# FSD Architecture rule for public api imports (`fsd-architecture/public-api-imports`)
+# FSD Architecture rule for public api imports (`feature-sliced-design-architecture/public-api-imports`)
 
 <!-- end auto-generated rule header -->
 
@@ -16,7 +16,7 @@ FSD Architecture rule for public api imports
 ### Examples options settings
 
 ```js
-'fsd-architecture/public-api-imports': ['error', {
+'feature-sliced-design-architecture/public-api-imports': ['error', {
   alias: '@', // Example import path with alias - @/shared/...
   ignoreImportPatterns: ['**/StoreProvider', '**/*.test.*'],
 }],

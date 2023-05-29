@@ -92,7 +92,7 @@ Examples of **incorrect** code for this rule:
 import AddComment from '@/features/AddComment' // Error: A layer can only import the underlying layers into itself. (app > pages > widgets > features > entities > shared)
 ```
 
-# Checking relative imports in one FSD slice(`feature-sliced-design-architecture/import-path-check`)
+# Checking relative imports in one FSD slice(`feature-sliced-design-architecture/path-checker`)
 
 <!-- end auto-generated rule header -->
 
@@ -109,7 +109,7 @@ Checking relative imports in one FSD slice
 ### Examples options settings
 
 ```js
-'feature-sliced-design-architecture/import-path-check': ['error', {
+'feature-sliced-design-architecture/path-checker': ['error', {
   alias: '@', // Example import path with alias - @/shared/...
 }],
 ```

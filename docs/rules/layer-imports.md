@@ -1,4 +1,4 @@
-# Rule for check imports from layers structure of FSD architecture (`fsd-architecture/layer-imports`)
+# Rule for check imports from layers structure of FSD architecture (`feature-sliced-design-architecture/layer-imports`)
 
 <!-- end auto-generated rule header -->
 
@@ -16,7 +16,7 @@ Rule for check imports from layers structure of FSD architecture
 ### Examples options settings
 
 ```js
-'fsd-architecture/layer-imports': ['error', {
+'feature-sliced-design-architecture/layer-imports': ['error', {
   alias: '@', // Example import path with alias - @/shared/...
   ignoreImportPatterns: ['**/StoreProvider', '**/*.test.*'],
 }],

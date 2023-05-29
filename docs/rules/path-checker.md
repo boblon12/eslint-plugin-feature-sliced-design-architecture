@@ -1,4 +1,4 @@
-# Checking relative imports in one FSD slice (`fsd-architecture/import-path-check`)
+# Checking relative imports in one FSD slice(`feature-sliced-design-architecture/path-checker`)
 
 <!-- end auto-generated rule header -->
 
@@ -15,7 +15,7 @@ Checking relative imports in one FSD slice
 ### Examples options settings
 
 ```js
-'fsd-architecture/import-path-check': ['error', {
+'feature-sliced-design-architecture/path-checker': ['error', {
   alias: '@', // Example import path with alias - @/shared/...
 }],
 ```
